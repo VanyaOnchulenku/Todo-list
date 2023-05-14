@@ -15,7 +15,7 @@ const conn = mysql.createConnection({
 })
 
 
-app.get('/animals', (req, res) => {
+app.get('/pets', (req, res) => {
     const q = 'SELECT * FROM animals'
     conn.query(q,(err, data) =>{
         if(err) res.send(err)
@@ -24,7 +24,7 @@ app.get('/animals', (req, res) => {
 })
 
 
-app.post('/animals', (req,res)=> {
+app.post('/pets', (req,res)=> {
     const animal = req.body
     const q = 'INSERT INTO animals (`type`, `breed`, `desc`, `age`, `host`) VALUES (?)'
     const values = [animal.type, animal.breed, animal.desc, animal.age, animal.host]
@@ -34,7 +34,7 @@ app.post('/animals', (req,res)=> {
     })
 })
 
-app.delete('/animals/:id', (req, res) => {
+app.delete('/pets/:id', (req, res) => {
     const q = 'DELETE FROM animals WHERE id = ?'
     conn.query(q,[req.params.id], (err, data) => {
         if(err) res.send(err)
@@ -42,7 +42,7 @@ app.delete('/animals/:id', (req, res) => {
     })
 })
 
-app.put('/animals/:id', (req,res) => {
+app.put('/pets/:id', (req,res) => {
     const animalId = req.params.id
     const animal = req.body
     const q = 'UPDATE animals SET `type` = ?, `breed` = ?, `desc` = ?, `age` = ?, `host` = ? WHERE `id` = ?'

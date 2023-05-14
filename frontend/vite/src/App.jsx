@@ -1,14 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from 'react'
+import {Routes, Route, BrowserRouter} from 'react-router-dom'
 import axios from 'axios'
+import Home from './Home'
+import Pets from './Pets'
+import Add from './Add'
+import Update from './Update'
+import Delete from './Delete'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <h1>Hello World</h1>
+    <div className ='App'>
+      <Routes>
+          <Route path = '/' element = {<Home/>} />
+          <Route path = '/pets' element = {<Pets/>}/>
+          <Route path = '/add' element = {<Add/>} />
+          <Route path = '/update/:id' element = {<Update/>} />
+      </Routes>
+    </div>
       
   )
 }
